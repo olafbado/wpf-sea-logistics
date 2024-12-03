@@ -1,0 +1,221 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:pdab.ViewModels"
+                    xmlns:vw="clr-namespace:pdab.Views"
+                    >
+    <!-- SHIP -->
+    <DataTemplate DataType="{x:Type vm:AllShipsViewModel}">
+        <vw:AllShips/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipViewModel}">
+        <vw:NewShip/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllShipTypesViewModel}">
+        <vw:AllShipTypes/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipTypeViewModel}">
+        <vw:NewShipType/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllShipCargosViewModel}">
+        <vw:AllShipCargos/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipCargoViewModel}">
+        <vw:NewShipCargo/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllShipRoutesViewModel}">
+        <vw:AllShipRoutes/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipRouteViewModel}">
+        <vw:NewShipRoute/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllShipMaintenancesViewModel}">
+        <vw:AllShipMaintenances/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipMaintenanceViewModel}">
+        <vw:NewShipMaintenance/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllShipInspectionsViewModel}">
+        <vw:AllShipInspections/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipInspectionViewModel}">
+        <vw:NewShipInspection/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllFuelLogsViewModel}">
+        <vw:AllFuelLogs/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewFuelLogViewModel}">
+        <vw:NewFuelLog/>
+    </DataTemplate>
+
+
+    <!-- CARGO -->
+    <DataTemplate DataType="{x:Type vm:AllCargosViewModel}">
+        <vw:AllCargos/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewCargoViewModel}">
+        <vw:NewCargo/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllCargoTypesViewModel}">
+        <vw:AllCargoTypes/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewCargoTypeViewModel}">
+        <vw:NewCargoType/>
+    </DataTemplate>
+
+    <!-- CREW -->
+    <DataTemplate DataType="{x:Type vm:AllCrewMembersViewModel}">
+        <vw:AllCrewMembers/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewCrewMemberViewModel}">
+        <vw:NewCrewMember/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllCrewAssignmentsViewModel}">
+        <vw:AllCrewAssignments/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewCrewAssignmentViewModel}">
+        <vw:NewCrewAssignment/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllRanksViewModel}">
+        <vw:AllRanks/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewRankViewModel}">
+        <vw:NewRank/>
+    </DataTemplate>
+
+    <!-- OTHER -->
+    <DataTemplate DataType="{x:Type vm:AllContractsViewModel}">
+        <vw:AllContracts/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewContractViewModel}">
+        <vw:NewContract/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllPortsViewModel}">
+        <vw:AllPorts/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewPortViewModel}">
+        <vw:NewPort/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllPortFeesViewModel}">
+        <vw:AllPortFees/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewPortFeeViewModel}">
+        <vw:NewPortFee/>
+    </DataTemplate>
+
+
+    <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border 
+            Background="Blue" 
+            BorderBrush="LightGray" 
+            BorderThickness="1" 
+            CornerRadius="5" 
+            Margin="4" 
+            Padding="4" 
+            SnapsToDevicePixels="True" 
+            >
+                        <TextBlock 
+              FontSize="14"
+              FontWeight="Bold"
+              Foreground="White" 
+              HorizontalAlignment="Center"  
+              Text="{TemplateBinding Content}" 
+              />
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- 
+        This template ensures that content of a HeaderedContentControl 
+        fills the available vertical space. 
+        -->
+                <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <DockPanel>
+                        <ContentPresenter 
+              DockPanel.Dock="Top"
+              ContentSource="Header" 
+              ContentTemplate="{TemplateBinding HeaderTemplate}" 
+              />
+                        <ContentPresenter 
+              ContentSource="Content" 
+              ContentTemplate="{TemplateBinding ContentTemplate}" 
+              />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--
+  This style ensures that the borders in the main window are consistent.
+  -->
+    <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+    <!--
+  This template explains how to render the list of commands on the left
+  side in the main window (the 'Control Panel' area).
+  -->
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="1">
+            <Hyperlink Command="{Binding Path=Command}">
+              <TextBlock Text="{Binding Path=DisplayName}" />
+            </Hyperlink>
+          </TextBlock>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+
+    <!-- 
+  This template explains how to render 
+  a tab item with a close button.
+  -->
+    <DataTemplate x:Key="ClosableTabItemTemplate">
+        <DockPanel Width="120">
+            <Button 
+        Command="{Binding Path=CloseCommand}"
+        Content="X"
+        Cursor="Hand"
+        DockPanel.Dock="Right"
+        Focusable="False"
+        FontFamily="Courier" 
+        FontSize="9"
+        FontWeight="Bold"  
+        Margin="0,1,0,0"
+        Padding="0"
+        VerticalContentAlignment="Bottom"
+        Width="16" Height="16" 
+        />
+            <ContentPresenter 
+        Content="{Binding Path=DisplayName}" 
+        VerticalAlignment="Center" 
+        />
+        </DockPanel>
+    </DataTemplate>
+
+    <!--
+  This template explains how to render the 'Workspace' content area in the main window.
+  -->
+    <DataTemplate x:Key="WorkspacesTemplate">
+        <TabControl 
+      IsSynchronizedWithCurrentItem="True" 
+      ItemsSource="{Binding}" 
+      ItemTemplate="{StaticResource ClosableTabItemTemplate}"
+      Margin="4"
+      />
+    </DataTemplate>
+</ResourceDictionary>

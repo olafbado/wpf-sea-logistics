@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\AllBooks.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllCargos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllCargoTypes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllContracts.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllCrewAssignments.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllCrewMembers.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllFuelLogs.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllPortFees.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllPorts.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllRanks.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllShipCargos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllShipInspections.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllShipMaintenances.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllShipRoutes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllShips.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AllShipTypes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewBookView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewCargo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewCargoType.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewContract.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewCrewAssignment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewCrewMember.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewFuelLog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewPort.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewPortFee.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewRank.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewShip.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewShipCargo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewShipInspection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewShipMaintenance.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewShipRoute.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewShipType.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllCargos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllCargoTypes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllContracts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllCrewAssignments.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllCrewMembers.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllFuelLogs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllPortFees.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllPorts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllRanks.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllShipCargos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllShipInspections.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllShipMaintenances.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllShipRoutes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllShips.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllShipTypes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllBooks.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewBookView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindowResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewCargo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewCargoType.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewContract.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewCrewAssignment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewCrewMember.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewFuelLog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewPort.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewPortFee.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewRank.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewShip.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewShipCargo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewShipInspection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewShipMaintenance.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewShipRoute.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewShipType.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

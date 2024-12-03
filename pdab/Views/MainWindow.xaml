@@ -1,0 +1,61 @@
+﻿<Window x:Class="pdab.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        Title="Sea Logistics" Height="300" Width="300" WindowState="Maximized"
+        xmlns:vm="clr-namespace:pdab.Views"
+        >
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"  />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Padding="5" Margin="0" Background="#003B6F" Foreground="White">
+            <MenuItem Header="_File"/>
+            <MenuItem Header="_View">
+                <MenuItem Header="All Ships" Foreground="Black"/>
+                <MenuItem Header="New Ship" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem Header="Actions"/>
+            <MenuItem Header="Help"/>
+        </Menu>
+        <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Padding="0" Background="#004C8C" Foreground="White">
+            <Button Content="🏠" ToolTip="Main page" Command="{Binding NavigateHomeCommand}" />
+            <Button Content="⚓" ToolTip="Fleet" Command="{Binding NavigateFleetCommand}" />
+            <Button Content="📦" ToolTip="Cargo" Command="{Binding NavigateCargoCommand}" />
+            <Button Content="👥" ToolTip="Crew" Command="{Binding NavigateCrewCommand}" />
+        </ToolBar>
+        <Border Grid.Row="2" Grid.Column="0" Background="#EAF4FC" BorderBrush="#003B6F" BorderThickness="1">
+            <HeaderedContentControl 
+                Header="Actions" 
+                Content="{Binding Path=Commands}" 
+                ContentTemplate="{StaticResource CommandsTemplate}"
+                Style="{StaticResource MainHCCStyle}"
+                />
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1" Background="White">
+            <HeaderedContentControl 
+                Header="Workspace"
+                Content="{Binding Path=Workspaces}"
+                ContentTemplate="{StaticResource WorkspacesTemplate}"
+                Style="{StaticResource MainHCCStyle}"
+                
+            />
+        </Border>
+
+        <StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Background="#003B6F" Foreground="White">
+            <StatusBarItem>
+                <TextBlock>© 2024 Sea Logistics System</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window>
