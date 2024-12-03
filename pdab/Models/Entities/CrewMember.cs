@@ -5,17 +5,15 @@ namespace pdab.Models.Entities;
 
 public partial class CrewMember
 {
-    public int CrewMemberId { get; set; }
+    public int Id { get; set; }
 
     public string FirstName { get; set; } = null!;
 
     public string LastName { get; set; } = null!;
 
-    public string Rank { get; set; } = null!;
-
-    public int ShipId { get; set; }
+    public int RankId { get; set; }
 
     public virtual ICollection<CrewAssignment> CrewAssignments { get; set; } = new List<CrewAssignment>();
 
-    public virtual Ship Ship { get; set; } = null!;
+    public virtual Rank Rank { get; set; } = null!;
 }

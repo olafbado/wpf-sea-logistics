@@ -42,31 +42,19 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => LastName);
             }
         }
-        public string Rank
+        public int RankId
         {
             get
             {
-                return item.Rank;
+                return item.RankId;
             }
             set
             {
-                item.Rank = value;
-                OnPropertyChanged(() => Rank);
+                item.RankId = value;
+                OnPropertyChanged(() => RankId);
             }
         }
 
-        public int ShipId
-        {
-            get
-            {
-                return item.ShipId;
-            }
-            set
-            {
-                item.ShipId = value;
-                OnPropertyChanged(() => ShipId);
-            }
-        }
 
         #endregion
 

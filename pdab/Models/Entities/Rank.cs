@@ -5,7 +5,9 @@ namespace pdab.Models.Entities;
 
 public partial class Rank
 {
-    public int RankId { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; } = null!;
+
+    public virtual ICollection<CrewMember> CrewMembers { get; set; } = new List<CrewMember>();
 }

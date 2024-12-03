@@ -15,8 +15,6 @@ public partial class PdabDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Book> Books { get; set; }
-
     public virtual DbSet<Cargo> Cargos { get; set; }
 
     public virtual DbSet<CargoType> CargoTypes { get; set; }
@@ -47,46 +45,42 @@ public partial class PdabDbContext : DbContext
 
     public virtual DbSet<ShipType> ShipTypes { get; set; }
 
+    public virtual DbSet<ShipTypeCargoType> ShipTypeCargoTypes { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Initial Catalog=pdab_db;Integrated Security=True;Encrypt=True");
+        => optionsBuilder.UseSqlServer("Data Source=OLAF;Initial Catalog=pdab_db;Integrated Security=True;Encrypt=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Book>(entity =>
-        {
-            entity.ToTable("book");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("name");
-            entity.Property(e => e.TypeId).HasColumnName("type_id");
-        });
-
         modelBuilder.Entity<Cargo>(entity =>
         {
-            entity.HasKey(e => e.CargoId).HasName("PK__Cargo__B4E665CD340A7DAE");
+            entity.HasKey(e => e.Id).HasName("PK__Cargo__3214EC277DD3D51A");
 
             entity.ToTable("Cargo");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Description).HasMaxLength(500);
-            entity.Property(e => e.Type).HasMaxLength(100);
-            entity.Property(e => e.Weight).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(d => d.CargoType).WithMany(p => p.Cargos)
+                .HasForeignKey(d => d.CargoTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Cargo__CargoType__44FF419A");
         });
 
         modelBuilder.Entity<CargoType>(entity =>
         {
-            entity.HasKey(e => e.CargoTypeId).HasName("PK__CargoTyp__87BCCBD9E6C5390B");
+            entity.HasKey(e => e.Id).HasName("PK__CargoTyp__3214EC273D2B1B25");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Contract>(entity =>
         {
-            entity.HasKey(e => e.ContractId).HasName("PK__Contract__C90D3469B7A99654");
+            entity.HasKey(e => e.Id).HasName("PK__Contract__3214EC275F3DE21A");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ContractDate).HasColumnType("datetime");
             entity.Property(e => e.CustomerName).HasMaxLength(200);
             entity.Property(e => e.DeliveryDeadline).HasColumnType("datetime");
@@ -94,121 +88,127 @@ public partial class PdabDbContext : DbContext
             entity.HasOne(d => d.Cargo).WithMany(p => p.Contracts)
                 .HasForeignKey(d => d.CargoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Contracts__Cargo__70DDC3D8");
-
-            entity.HasOne(d => d.Ship).WithMany(p => p.Contracts)
-                .HasForeignKey(d => d.ShipId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Contracts__ShipI__71D1E811");
+                .HasConstraintName("FK__Contracts__Cargo__52593CB8");
         });
 
         modelBuilder.Entity<CrewAssignment>(entity =>
         {
-            entity.HasKey(e => e.AssignmentId).HasName("PK__CrewAssi__32499E776CE98A68");
+            entity.HasKey(e => e.Id).HasName("PK__CrewAssi__3214EC27AB92FCF2");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
 
             entity.HasOne(d => d.CrewMember).WithMany(p => p.CrewAssignments)
                 .HasForeignKey(d => d.CrewMemberId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CrewAssig__CrewM__6477ECF3");
+                .HasConstraintName("FK__CrewAssig__CrewM__5BE2A6F2");
 
-            entity.HasOne(d => d.Route).WithMany(p => p.CrewAssignments)
-                .HasForeignKey(d => d.RouteId)
+            entity.HasOne(d => d.ShipRoute).WithMany(p => p.CrewAssignments)
+                .HasForeignKey(d => d.ShipRouteId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CrewAssig__Route__6383C8BA");
+                .HasConstraintName("FK__CrewAssig__ShipR__5AEE82B9");
         });
 
         modelBuilder.Entity<CrewMember>(entity =>
         {
-            entity.HasKey(e => e.CrewMemberId).HasName("PK__CrewMemb__BE4E6E6CB13C4F7C");
+            entity.HasKey(e => e.Id).HasName("PK__CrewMemb__3214EC273BFCC177");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.FirstName).HasMaxLength(100);
             entity.Property(e => e.LastName).HasMaxLength(100);
-            entity.Property(e => e.Rank).HasMaxLength(100);
 
-            entity.HasOne(d => d.Ship).WithMany(p => p.CrewMembers)
-                .HasForeignKey(d => d.ShipId)
+            entity.HasOne(d => d.Rank).WithMany(p => p.CrewMembers)
+                .HasForeignKey(d => d.RankId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CrewMembe__ShipI__534D60F1");
+                .HasConstraintName("FK__CrewMembe__RankI__4222D4EF");
         });
 
         modelBuilder.Entity<FuelLog>(entity =>
         {
-            entity.HasKey(e => e.FuelLogId).HasName("PK__FuelLogs__FFEFAACBF6C541D1");
+            entity.HasKey(e => e.Id).HasName("PK__FuelLogs__3214EC27486A2A28");
 
-            entity.Property(e => e.Cost).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.FuelType).HasMaxLength(100);
-            entity.Property(e => e.Quantity).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.Ship).WithMany(p => p.FuelLogs)
                 .HasForeignKey(d => d.ShipId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__FuelLogs__ShipId__6A30C649");
+                .HasConstraintName("FK__FuelLogs__ShipId__619B8048");
         });
 
         modelBuilder.Entity<Port>(entity =>
         {
-            entity.HasKey(e => e.PortId).HasName("PK__Ports__D859BF8F767D28D0");
+            entity.HasKey(e => e.Id).HasName("PK__Ports__3214EC27623F9A6D");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Country).HasMaxLength(100);
             entity.Property(e => e.Name).HasMaxLength(200);
         });
 
         modelBuilder.Entity<PortFee>(entity =>
         {
-            entity.HasKey(e => e.FeeId).HasName("PK__PortFees__B387B229C5F7D6C0");
+            entity.HasKey(e => e.Id).HasName("PK__PortFees__3214EC27225F5D7E");
 
-            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Date).HasColumnType("datetime");
 
             entity.HasOne(d => d.Port).WithMany(p => p.PortFees)
                 .HasForeignKey(d => d.PortId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PortFees__PortId__6D0D32F4");
+                .HasConstraintName("FK__PortFees__PortId__6477ECF3");
 
             entity.HasOne(d => d.Ship).WithMany(p => p.PortFees)
                 .HasForeignKey(d => d.ShipId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PortFees__ShipId__6E01572D");
+                .HasConstraintName("FK__PortFees__ShipId__656C112C");
         });
 
         modelBuilder.Entity<Rank>(entity =>
         {
-            entity.HasKey(e => e.RankId).HasName("PK__Ranks__B37AF8767852342A");
+            entity.HasKey(e => e.Id).HasName("PK__Ranks__3214EC2774CC1035");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Ship>(entity =>
         {
-            entity.HasKey(e => e.ShipId).HasName("PK__Ships__2A05CAB3FA6DD461");
+            entity.HasKey(e => e.Id).HasName("PK__Ships__3214EC278C00DC39");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Flag).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(200);
-            entity.Property(e => e.Type).HasMaxLength(100);
+
+            entity.HasOne(d => d.ShipType).WithMany(p => p.Ships)
+                .HasForeignKey(d => d.ShipTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Ships__ShipTypeI__3F466844");
         });
 
         modelBuilder.Entity<ShipCargo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ShipCarg__3214EC071D148D60");
+            entity.HasKey(e => e.Id).HasName("PK__ShipCarg__3214EC27386758AC");
 
             entity.ToTable("ShipCargo");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
 
             entity.HasOne(d => d.Cargo).WithMany(p => p.ShipCargos)
                 .HasForeignKey(d => d.CargoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipCargo__Cargo__59063A47");
+                .HasConstraintName("FK__ShipCargo__Cargo__48CFD27E");
 
             entity.HasOne(d => d.Ship).WithMany(p => p.ShipCargos)
                 .HasForeignKey(d => d.ShipId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipCargo__ShipI__5812160E");
+                .HasConstraintName("FK__ShipCargo__ShipI__47DBAE45");
         });
 
         modelBuilder.Entity<ShipInspection>(entity =>
         {
-            entity.HasKey(e => e.InspectionId).HasName("PK__ShipInsp__30B2DC0882922270");
+            entity.HasKey(e => e.Id).HasName("PK__ShipInsp__3214EC271CA8600D");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.InspectorName).HasMaxLength(100);
             entity.Property(e => e.Notes).HasMaxLength(500);
@@ -216,53 +216,79 @@ public partial class PdabDbContext : DbContext
             entity.HasOne(d => d.Ship).WithMany(p => p.ShipInspections)
                 .HasForeignKey(d => d.ShipId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipInspe__ShipI__6754599E");
+                .HasConstraintName("FK__ShipInspe__ShipI__5EBF139D");
         });
 
         modelBuilder.Entity<ShipMaintenance>(entity =>
         {
-            entity.HasKey(e => e.MaintenanceId).HasName("PK__ShipMain__E60542D53E7CEB69");
+            entity.HasKey(e => e.Id).HasName("PK__ShipMain__3214EC271614E7CE");
 
             entity.ToTable("ShipMaintenance");
 
-            entity.Property(e => e.Cost).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(500);
 
             entity.HasOne(d => d.Ship).WithMany(p => p.ShipMaintenances)
                 .HasForeignKey(d => d.ShipId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipMaint__ShipI__5BE2A6F2");
+                .HasConstraintName("FK__ShipMaint__ShipI__4F7CD00D");
         });
 
         modelBuilder.Entity<ShipRoute>(entity =>
         {
-            entity.HasKey(e => e.RouteId).HasName("PK__ShipRout__80979B4D1A1681A7");
+            entity.HasKey(e => e.Id).HasName("PK__ShipRout__3214EC2794CD425E");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ArrivalDate).HasColumnType("datetime");
             entity.Property(e => e.DepartureDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.ArrivalPort).WithMany(p => p.ShipRouteArrivalPorts)
                 .HasForeignKey(d => d.ArrivalPortId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipRoute__Arriv__60A75C0F");
+                .HasConstraintName("FK__ShipRoute__Arriv__571DF1D5");
+
+            entity.HasOne(d => d.Contract).WithMany(p => p.ShipRoutes)
+                .HasForeignKey(d => d.ContractId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ShipRoute__Contr__5812160E");
 
             entity.HasOne(d => d.DeparturePort).WithMany(p => p.ShipRouteDeparturePorts)
                 .HasForeignKey(d => d.DeparturePortId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipRoute__Depar__5FB337D6");
+                .HasConstraintName("FK__ShipRoute__Depar__5629CD9C");
 
             entity.HasOne(d => d.Ship).WithMany(p => p.ShipRoutes)
                 .HasForeignKey(d => d.ShipId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ShipRoute__ShipI__5EBF139D");
+                .HasConstraintName("FK__ShipRoute__ShipI__5535A963");
         });
 
         modelBuilder.Entity<ShipType>(entity =>
         {
-            entity.HasKey(e => e.ShipTypeId).HasName("PK__ShipType__72DCD0B806D8F41E");
+            entity.HasKey(e => e.Id).HasName("PK__ShipType__3214EC27A1945BD0");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Name).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<ShipTypeCargoType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__ShipType__3214EC273D1BA3C1");
+
+            entity.ToTable("ShipTypeCargoType");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+
+            entity.HasOne(d => d.CargoType).WithMany(p => p.ShipTypeCargoTypes)
+                .HasForeignKey(d => d.CargoTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ShipTypeC__Cargo__4CA06362");
+
+            entity.HasOne(d => d.ShipType).WithMany(p => p.ShipTypeCargoTypes)
+                .HasForeignKey(d => d.ShipTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__ShipTypeC__ShipT__4BAC3F29");
         });
 
         OnModelCreatingPartial(modelBuilder);

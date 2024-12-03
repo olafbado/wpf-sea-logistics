@@ -5,7 +5,7 @@ namespace pdab.Models.Entities;
 
 public partial class ShipInspection
 {
-    public int InspectionId { get; set; }
+    public int Id { get; set; }
 
     public int ShipId { get; set; }
 

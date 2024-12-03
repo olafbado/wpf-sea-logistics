@@ -31,19 +31,7 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => CargoId);
             }
         }
-        public int ShipId
-        {
-            get
-            {
-                return item.ShipId;
-            }
-            set
-            {
-                item.ShipId = value;
-                OnPropertyChanged(() => ShipId);
-
-            }
-        }
+       
         public string CustomerName
         {
             get

@@ -19,7 +19,7 @@ namespace pdab.ViewModels
     #endregion
     #region Properties
     //dla każdego pola na interface tworzymy properties
-    public decimal Quantity
+    public int Quantity
     {
         get
         {
@@ -31,7 +31,7 @@ namespace pdab.ViewModels
             OnPropertyChanged(() => Quantity);
         }
     }
-        public decimal Cost
+        public int Cost
         {
             get
             {

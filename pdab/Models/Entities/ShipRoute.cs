@@ -5,7 +5,7 @@ namespace pdab.Models.Entities;
 
 public partial class ShipRoute
 {
-    public int RouteId { get; set; }
+    public int Id { get; set; }
 
     public int ShipId { get; set; }
 
@@ -13,11 +13,15 @@ public partial class ShipRoute
 
     public int ArrivalPortId { get; set; }
 
+    public int ContractId { get; set; }
+
     public DateTime DepartureDate { get; set; }
 
     public DateTime ArrivalDate { get; set; }
 
     public virtual Port ArrivalPort { get; set; } = null!;
+
+    public virtual Contract Contract { get; set; } = null!;
 
     public virtual ICollection<CrewAssignment> CrewAssignments { get; set; } = new List<CrewAssignment>();
 

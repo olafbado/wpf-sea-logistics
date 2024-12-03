@@ -32,16 +32,16 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => Name);
             }
         }
-        public string Type
+        public int ShipTypeId
         {
             get
             {
-                return item.Type;
+                return item.ShipTypeId;
             }
             set
             {
-                item.Type = value;
-                OnPropertyChanged(() => Type);
+                item.ShipTypeId = value;
+                OnPropertyChanged(() => ShipTypeId);
             }
         }
         public string Flag

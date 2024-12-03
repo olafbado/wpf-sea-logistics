@@ -348,7 +348,6 @@ D:\Studia\desktopowe\projekt\pdab\bin\Debug\net9.0-windows7.0\runtimes\unix\lib\
 D:\Studia\desktopowe\projekt\pdab\bin\Debug\net9.0-windows7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Studia\desktopowe\projekt\pdab\bin\Debug\net9.0-windows7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab.csproj.AssemblyReference.cache
-D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllBooks.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllCargos.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllCargoTypes.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllContracts.g.cs
@@ -365,7 +364,6 @@ D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShipRoute
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShips.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShipTypes.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\MainWindow.g.cs
-D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewBookView.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewCargo.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewCargoType.g.cs
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewContract.g.cs
@@ -386,7 +384,6 @@ D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\GeneratedInternalT
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab_MarkupCompile.cache
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab_MarkupCompile.lref
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Themes\Generic.baml
-D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllBooks.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllCargos.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllCargoTypes.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllContracts.baml
@@ -404,7 +401,6 @@ D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShips.bam
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShipTypes.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\MainWindow.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\MainWindowResources.baml
-D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewBookView.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewCargo.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewCargoType.baml
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewContract.baml
@@ -428,3 +424,8 @@ D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab.csproj.CoreCo
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab.csproj.Up2Date
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab.genruntimeconfig.cache
 D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\ref\pdab.dll
+D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\pdab.sourcelink.json
+D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShipTypesCargoTypes.g.cs
+D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\AllShipTypesCargoTypes.baml
+D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewShipTypeCargoType.g.cs
+D:\Studia\desktopowe\projekt\pdab\obj\Debug\net9.0-windows7.0\Views\NewShipTypeCargoType.baml

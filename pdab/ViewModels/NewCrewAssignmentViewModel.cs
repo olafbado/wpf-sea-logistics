@@ -18,16 +18,16 @@ namespace pdab.ViewModels
         #endregion
         #region Properties
         //dla każdego pola na interface tworzymy properties
-        public int RouteId
+        public int ShipRouteId
         {
             get
             {
-                return item.RouteId;
+                return item.ShipRouteId;
             }
             set
             {
-                item.RouteId = value;
-                OnPropertyChanged(() => RouteId);
+                item.ShipRouteId = value;
+                OnPropertyChanged(() => ShipRouteId);
             }
         }
         public int CrewMemberId

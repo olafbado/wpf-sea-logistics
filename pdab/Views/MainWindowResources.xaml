@@ -46,6 +46,12 @@
     <DataTemplate DataType="{x:Type vm:NewFuelLogViewModel}">
         <vw:NewFuelLog/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AllShipTypesCargoTypesViewModel}">
+        <vw:AllShipTypesCargoTypes/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NewShipTypeCargoTypeViewModel}">
+        <vw:NewShipTypeCargoType/>
+    </DataTemplate>
 
 
     <!-- CARGO -->

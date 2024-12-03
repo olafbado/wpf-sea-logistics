@@ -55,7 +55,7 @@ namespace pdab.ViewModels
             }
         }
 
-        public decimal Cost
+        public int Cost
         {
             get
             {

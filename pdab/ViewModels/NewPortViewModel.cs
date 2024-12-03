@@ -42,18 +42,6 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => Country);
             }
         }
-        public int Capacity
-        {
-            get
-            {
-                return item.Capacity;
-            }
-            set
-            {
-                item.Capacity = value;
-                OnPropertyChanged(() => Capacity);
-            }
-        }
 
         
 

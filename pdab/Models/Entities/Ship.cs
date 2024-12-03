@@ -5,19 +5,15 @@ namespace pdab.Models.Entities;
 
 public partial class Ship
 {
-    public int ShipId { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public string Type { get; set; } = null!;
+    public int ShipTypeId { get; set; }
 
     public string Flag { get; set; } = null!;
 
     public int BuildYear { get; set; }
-
-    public virtual ICollection<Contract> Contracts { get; set; } = new List<Contract>();
-
-    public virtual ICollection<CrewMember> CrewMembers { get; set; } = new List<CrewMember>();
 
     public virtual ICollection<FuelLog> FuelLogs { get; set; } = new List<FuelLog>();
 
@@ -30,4 +26,6 @@ public partial class Ship
     public virtual ICollection<ShipMaintenance> ShipMaintenances { get; set; } = new List<ShipMaintenance>();
 
     public virtual ICollection<ShipRoute> ShipRoutes { get; set; } = new List<ShipRoute>();
+
+    public virtual ShipType ShipType { get; set; } = null!;
 }

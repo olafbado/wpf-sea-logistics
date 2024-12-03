@@ -5,13 +5,15 @@ namespace pdab.Models.Entities;
 
 public partial class Cargo
 {
-    public int CargoId { get; set; }
+    public int Id { get; set; }
 
     public string Description { get; set; } = null!;
 
-    public decimal Weight { get; set; }
+    public int Weight { get; set; }
 
-    public string Type { get; set; } = null!;
+    public int CargoTypeId { get; set; }
+
+    public virtual CargoType CargoType { get; set; } = null!;
 
     public virtual ICollection<Contract> Contracts { get; set; } = new List<Contract>();
 

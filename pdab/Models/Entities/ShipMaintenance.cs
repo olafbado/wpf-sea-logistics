@@ -5,7 +5,7 @@ namespace pdab.Models.Entities;
 
 public partial class ShipMaintenance
 {
-    public int MaintenanceId { get; set; }
+    public int Id { get; set; }
 
     public int ShipId { get; set; }
 
@@ -13,7 +13,7 @@ public partial class ShipMaintenance
 
     public string Description { get; set; } = null!;
 
-    public decimal Cost { get; set; }
+    public int Cost { get; set; }
 
     public virtual Ship Ship { get; set; } = null!;
 }

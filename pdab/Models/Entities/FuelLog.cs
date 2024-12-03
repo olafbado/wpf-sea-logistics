@@ -5,7 +5,7 @@ namespace pdab.Models.Entities;
 
 public partial class FuelLog
 {
-    public int FuelLogId { get; set; }
+    public int Id { get; set; }
 
     public int ShipId { get; set; }
 
@@ -13,9 +13,9 @@ public partial class FuelLog
 
     public string FuelType { get; set; } = null!;
 
-    public decimal Quantity { get; set; }
+    public int Quantity { get; set; }
 
-    public decimal Cost { get; set; }
+    public int Cost { get; set; }
 
     public virtual Ship Ship { get; set; } = null!;
 }

@@ -55,7 +55,7 @@ namespace pdab.ViewModels
             }
         }
 
-        public decimal Amount
+        public int Amount
         {
             get
             {

@@ -24,7 +24,7 @@ namespace pdab.Models.BusinessLogic
                     from shipType in db.ShipTypes
                     select new KeyAndValue
                     {
-                        Key = shipType.ShipTypeId,
+                        Key = shipType.Id,
                         Value = shipType.Name
                     }
                 ).ToList().AsQueryable();

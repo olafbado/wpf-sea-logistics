@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
-using pdab.Models.Entities;
+using System.Windows.Documents;
 
 namespace pdab.ViewModels
 {
-    public class AllBooksViewModel : AllViewModel<Book>
+    public class AllShipTypesCargoTypesViewModel : AllViewModel<ShipTypeCargoType>
     {
         #region Constructor
-        public AllBooksViewModel()
-            : base("Books")
+        public AllShipTypesCargoTypesViewModel()
+            : base("Ship types Cargo types")
         {
         }
         #endregion
@@ -21,9 +21,9 @@ namespace pdab.ViewModels
         //metoda load pobiera wszystkie towary z bazy danych 
         public override void Load()
         {
-            List = new ObservableCollection<Book>
+            List = new ObservableCollection<ShipTypeCargoType>
                 (
-                    pdabEntities.Books.ToList()
+                    pdabEntities.ShipTypeCargoTypes.ToList()
                 //z bazy danych, pobieram Towar i wszystkie rekordy zamieniam na listę
                 );
         }

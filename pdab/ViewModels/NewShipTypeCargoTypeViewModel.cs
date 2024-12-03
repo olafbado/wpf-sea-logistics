@@ -7,41 +7,30 @@ using pdab.Models.Entities;
 
 namespace pdab.ViewModels
 {
-    public class NewCargoViewModel:OneViewModel<Cargo>
+    public class NewShipTypeCargoTypeViewModel:OneViewModel<ShipTypeCargoType>
     {
         #region Konstruktor
-        public NewCargoViewModel()
-            : base("New cargo")
+        public NewShipTypeCargoTypeViewModel()
+            : base("New Ship type Cargo type")
         {
-            item = new Cargo();
+            item = new ShipTypeCargoType();
         }
         #endregion
         #region Properties
         //dla każdego pola na interface tworzymy properties
-        public string Description
+        public int ShipTypeId
         {
             get
             {
-                return item.Description;
+                return item.ShipTypeId;
             }
             set
             {
-                item.Description = value;
-                OnPropertyChanged(() => Description);
+                item.ShipTypeId = value;
+                OnPropertyChanged(() => ShipTypeId);
             }
         }
-        public int Weight
-        {
-            get
-            {
-                return item.Weight;
-            }
-            set
-            {
-                item.Weight = value;
-                OnPropertyChanged(() => Weight);
-            }
-        }
+
         public int CargoTypeId
         {
             get
@@ -54,14 +43,16 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => CargoTypeId);
             }
         }
+
         #endregion
 
         #region Helpers
         public override void Save()
         {
-            pdabEntities.Cargos.Add(item); //dodaje towar do lokalnej kolekcji 
-            pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
+            pdabEntities.ShipTypeCargoTypes.Add(item); // dodaje towar do lokalnej kolekcji 
+            pdabEntities.SaveChanges(); // zapisuje zmiany do bazy danych
         }
+
         #endregion
 
     }

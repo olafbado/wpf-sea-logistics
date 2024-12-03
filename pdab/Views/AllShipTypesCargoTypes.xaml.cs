@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace pdab.Views
 {
     /// <summary>
-    /// Interaction logic for AllBooks.xaml
+    /// Interaction logic for AllShipTypesCargoTypes.xaml
     /// </summary>
-    public partial class AllBooks : AllViewBase
+    public partial class AllShipTypesCargoTypes : AllViewBase
     {
-        public AllBooks()
+        public AllShipTypesCargoTypes()
         {
             InitializeComponent();
         }

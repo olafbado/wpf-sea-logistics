@@ -27,21 +27,6 @@ namespace pdab.ViewModels
             // Define both "All" and "New" workspace factories
             _workspaceFactories = new Dictionary<string, (Func<WorkspaceViewModel>, Func<WorkspaceViewModel>)>
             {
-                /*{ "Ship types", (() => new AllShipTypesViewModel(), () => new NewShipTypeViewModel()) },
-                { "Ranks", (() => new AllRanksViewModel(), () => new NewRankViewModel()) },
-                { "Cargo types", (() => new AllCargoTypesViewModel(), () => new NewCargoTypeViewModel()) },
-                { "Ship cargos", (() => new AllShipCargosViewModel(), () => new NewShipCargoViewModel()) },
-                { "Ship maintenances", (() => new AllShipMaintenancesViewModel(), () => new NewShipMaintenanceViewModel()) },
-                { "Cargos", (() => new AllCargosViewModel(), () => new NewCargoViewModel()) },
-                { "Ships", (() => new AllShipsViewModel(), () => new NewShipViewModel()) },
-                { "Ship inspections", (() => new AllShipInspectionsViewModel(), () => new NewShipInspectionViewModel()) },
-                { "Contracts", (() => new AllContractsViewModel(), () => new NewContractViewModel()) },
-                { "Ship routes", (() => new AllShipRoutesViewModel(), () => new NewShipRouteViewModel()) },
-                { "Fuel logs", (() => new AllFuelLogsViewModel(), () => new NewFuelLogViewModel()) },
-                { "Crew members", (() => new AllCrewMembersViewModel(), () => new NewCrewMemberViewModel()) },
-                { "Crew assignments", (() => new AllCrewAssignmentsViewModel(), () => new NewCrewAssignmentViewModel()) },
-                { "Port fees", (() => new AllPortFeesViewModel(), () => new NewPortFeeViewModel()) },
-                { "Ports", (() => new AllPortsViewModel(), () => new NewPortViewModel()) }*/
                  { "Ranks", (() => new AllRanksViewModel(), () => new NewRankViewModel()) },
                  { "Ship types", (() => new AllShipTypesViewModel(), () => new NewShipTypeViewModel()) },
                   { "Cargo types", (() => new AllCargoTypesViewModel(), () => new NewCargoTypeViewModel()) },
@@ -57,7 +42,8 @@ namespace pdab.ViewModels
                    { "Crew members", (() => new AllCrewMembersViewModel(), () => new NewCrewMemberViewModel()) },
 
             { "Crew assignments", (() => new AllCrewAssignmentsViewModel(), () => new NewCrewAssignmentViewModel()) },
-            { "Ports", (() => new AllPortsViewModel(), () => new NewPortViewModel()) }
+            { "Ports", (() => new AllPortsViewModel(), () => new NewPortViewModel()) },
+             { "Ship types Cargo types", (() => new AllShipTypesCargoTypesViewModel(), () => new NewShipTypeCargoTypeViewModel()) }
         };
             }
 
