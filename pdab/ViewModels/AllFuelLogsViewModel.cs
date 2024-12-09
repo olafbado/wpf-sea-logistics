@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
 using System.Windows.Documents;
+using Microsoft.EntityFrameworkCore;
 
 namespace pdab.ViewModels
 {
@@ -23,7 +24,7 @@ namespace pdab.ViewModels
         {
             List = new ObservableCollection<FuelLog>
                 (
-                    pdabEntities.FuelLogs.ToList()
+                    pdabEntities.FuelLogs.Include(fl => fl.Ship).ToList()
                 //z bazy danych, pobieram Towar i wszystkie rekordy zamieniam na listę
                 );
         }

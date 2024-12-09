@@ -10,8 +10,8 @@
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="ShipId" Binding="{Binding ShipId}"/>
-                <DataGridTextColumn Header="CargoId" Binding="{Binding CargoId}"/>
+                <DataGridTextColumn Header="Ship" Binding="{Binding Ship.Name}"/>
+                <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo.Description}"/>
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
         </DataGrid>

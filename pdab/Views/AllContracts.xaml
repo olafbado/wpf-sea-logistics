@@ -9,12 +9,11 @@
     <Grid Background="White">
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ContractId" Binding="{Binding ContractId}"/>
-                <DataGridTextColumn Header="CargoId" Binding="{Binding CargoId}"/>
-                <DataGridTextColumn Header="ShipId" Binding="{Binding ShipId}"/>
-                <DataGridTextColumn Header="CustomerName" Binding="{Binding CustomerName}"/>
-                <DataGridTextColumn Header="ContractDate" Binding="{Binding ContractDate}"/>
-                <DataGridTextColumn Header="DeliveryDeadline" Binding="{Binding DeliveryDeadline}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Cargo" Binding="{Binding Cargo.Description}"/>
+                <DataGridTextColumn Header="Customer Name" Binding="{Binding CustomerName}"/>
+                <DataGridTextColumn Header="Contract Date" Binding="{Binding ContractDate}"/>
+                <DataGridTextColumn Header="Delivery Deadline" Binding="{Binding DeliveryDeadline}"/>
 
             </DataGrid.Columns>
         </DataGrid>
