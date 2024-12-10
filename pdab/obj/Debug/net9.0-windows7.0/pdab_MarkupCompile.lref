@@ -16,6 +16,7 @@ FD:\Studia\desktopowe\projekt\pdab\Views\AllShipMaintenances.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\AllShipRoutes.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\AllShips.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\AllShipTypes.xaml;;
+FD:\Studia\desktopowe\projekt\pdab\Views\AllShipTypesCargoTypes.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\MainWindow.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\MainWindowResources.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\NewCargo.xaml;;
@@ -33,6 +34,5 @@ FD:\Studia\desktopowe\projekt\pdab\Views\NewShipInspection.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\NewShipMaintenance.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\NewShipRoute.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\NewShipType.xaml;;
-FD:\Studia\desktopowe\projekt\pdab\Views\AllShipTypesCargoTypes.xaml;;
 FD:\Studia\desktopowe\projekt\pdab\Views\NewShipTypeCargoType.xaml;;
 

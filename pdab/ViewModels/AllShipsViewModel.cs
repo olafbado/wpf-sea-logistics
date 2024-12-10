@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
+using pdab.Models.EntitiesForView;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
@@ -25,6 +27,16 @@ namespace pdab.ViewModels
                 (
                     pdabEntities.Ships.Include(s => s.ShipType).ToList()
                 );
+        }
+
+        public override void AddRecord()
+        {
+            Messenger.Default.Send("Add" + DisplayName);
+        }
+
+        public override void RefreshRecords()
+        {
+            Messenger.Default.Send("Refresh" + DisplayName);
         }
         #endregion
     }

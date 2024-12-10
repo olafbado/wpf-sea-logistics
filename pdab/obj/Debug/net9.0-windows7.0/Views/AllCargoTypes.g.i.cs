@@ -54,7 +54,7 @@ namespace pdab.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/pdab;V1.0.0.0;component/views/allcargotypes.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/pdab;component/views/allcargotypes.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AllCargoTypes.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

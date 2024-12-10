@@ -19,13 +19,18 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="ShipId"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=ShipId, UpdateSourceTrigger=PropertyChanged}"/>
-        
+        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="Ship"/>
+        <ComboBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8"
+ItemsSource="{Binding ShipItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=ShipId,Mode=TwoWay}"
+/>
+
         <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Date"/>
         <DatePicker Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" SelectedDate="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}"/>
         
-        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="FuelType"/>
+        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Fuel Type"/>
         <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=FuelType, UpdateSourceTrigger=PropertyChanged}"/>
         
         <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Quantity"/>

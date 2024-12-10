@@ -17,22 +17,49 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="Name"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="ShipId"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=ShipId, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Ship"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8"
+ItemsSource="{Binding ShipItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=ShipId,Mode=TwoWay}"
+/>
 
-        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="DepartureDate"/>
-        <DatePicker Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" SelectedDate="{Binding Path=DepartureDate, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Departure Date"/>
+        <DatePicker Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" SelectedDate="{Binding Path=DepartureDate, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="ArrivalDate"/>
-        <DatePicker Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" SelectedDate="{Binding Path=ArrivalDate, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="Arrival Date"/>
+        <DatePicker Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" SelectedDate="{Binding Path=ArrivalDate, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="DeparturePortId"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" Text="{Binding Path=DeparturePortId, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="0" Grid.Row="4" Margin="0,8,0,8" Content="Departure Port"/>
+        <ComboBox Grid.Column="1" Grid.Row="4" Margin="0,8,0,8"
+ItemsSource="{Binding PortItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=DeparturePortId,Mode=TwoWay}"
+/>
+
+        <Label Grid.Column="0" Grid.Row="5" Margin="0,8,0,8" Content="Arrival Port"/>
+        <ComboBox Grid.Column="1" Grid.Row="5" Margin="0,8,0,8"
+ItemsSource="{Binding PortItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=ArrivalPortId,Mode=TwoWay}"
+/>
 
 
-        <Label Grid.Column="0" Grid.Row="4" Margin="0,8,0,8" Content="ArrivalPortId"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Margin="0,8,0,8" Text="{Binding Path=ArrivalPortId, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="0" Grid.Row="6" Margin="0,8,0,8" Content="Contract"/>
+        <ComboBox Grid.Column="1" Grid.Row="6" Margin="0,8,0,8"
+ItemsSource="{Binding ContractItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=ContractId,Mode=TwoWay}"
+/>
     </Grid>
 </local:OneViewBase>

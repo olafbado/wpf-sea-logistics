@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
+using pdab.Models.BusinessLogic;
+using pdab.Models.EntitiesForView;
 
 namespace pdab.ViewModels
 {
@@ -63,6 +65,14 @@ namespace pdab.ViewModels
         {
             pdabEntities.CrewMembers.Add(item); //dodaje towar do lokalnej kolekcji 
             pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
+        }
+
+        public IQueryable<KeyAndValue> RankItems
+        {
+            get
+            {
+                return new RankLogic(pdabEntities).GetRanksKeyAndValueItems();
+            }
         }
         #endregion
 

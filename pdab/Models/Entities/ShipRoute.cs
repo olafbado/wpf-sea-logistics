@@ -19,6 +19,8 @@ public partial class ShipRoute
 
     public DateTime ArrivalDate { get; set; }
 
+    public string? Name { get; set; }
+
     public virtual Port ArrivalPort { get; set; } = null!;
 
     public virtual Contract Contract { get; set; } = null!;

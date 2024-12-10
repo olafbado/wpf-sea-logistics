@@ -15,10 +15,21 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="RouteId"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=RouteId, UpdateSourceTrigger=PropertyChanged}"/>
-        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="CrewMemberId"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=CrewMemberId, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="Ship Route"/>
+        <ComboBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8"
+ItemsSource="{Binding ShipRouteItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=ShipRouteId,Mode=TwoWay}"
+/>
+
+        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Crew Member"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8"
+ItemsSource="{Binding CrewMemberItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=CrewMemberId,Mode=TwoWay}"
+/>
 
     </Grid>
 </local:OneViewBase>

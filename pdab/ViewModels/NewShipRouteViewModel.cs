@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
+using pdab.Models.EntitiesForView;
+using pdab.Models.BusinessLogic;
 
 namespace pdab.ViewModels
 {
@@ -28,6 +30,32 @@ namespace pdab.ViewModels
             {
                 item.ShipId = value;
                 OnPropertyChanged(() => ShipId);
+            }
+        }
+
+        public string? Name
+        {
+            get
+            {
+                return item.Name;
+            }
+            set
+            {
+                item.Name = value;
+                OnPropertyChanged(() => Name);
+            }
+        }
+
+        public int ContractId
+        {
+            get
+            {
+                return item.ContractId;
+            }
+            set
+            {
+                item.ContractId = value;
+                OnPropertyChanged(() => ContractId);
             }
         }
         public int DeparturePortId
@@ -87,6 +115,31 @@ namespace pdab.ViewModels
         {
             pdabEntities.ShipRoutes.Add(item); //dodaje towar do lokalnej kolekcji 
             pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
+        }
+
+        public IQueryable<KeyAndValue> PortItems
+        {
+            get
+            {
+                return new PortLogic(pdabEntities).GetPortsKeyAndValueItems();
+
+            }
+        }
+
+        public IQueryable<KeyAndValue> ShipItems
+        {
+            get
+            {
+                return new ShipLogic(pdabEntities).GetShipsKeyAndValueItems();
+            }
+        }
+
+        public IQueryable<KeyAndValue> ContractItems
+        {
+            get
+            {
+                return new ContractLogic(pdabEntities).GetContractsKeyAndValueItems();
+            }
         }
         #endregion
 

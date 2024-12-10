@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using pdab.Models.BusinessLogic;
 using pdab.Models.Entities;
+using pdab.Models.EntitiesForView;
+
 
 namespace pdab.ViewModels
 {
@@ -53,6 +56,21 @@ namespace pdab.ViewModels
             pdabEntities.SaveChanges(); // zapisuje zmiany do bazy danych
         }
 
+        public IQueryable<KeyAndValue> ShipTypeItems
+        {
+            get
+            {
+                return new ShipTypesLogic(pdabEntities).GetShipTypesKeyAndValueItems();
+            }
+        }
+
+        public IQueryable<KeyAndValue> CargoTypeItems
+        {
+            get
+            {
+                return new CargoTypesLogic(pdabEntities).GetCargoTypesKeyAndValueItems();
+            }
+        }
         #endregion
 
     }

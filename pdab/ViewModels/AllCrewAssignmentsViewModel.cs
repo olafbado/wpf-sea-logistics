@@ -23,7 +23,7 @@ namespace pdab.ViewModels
         {
             List = new ObservableCollection<CrewAssignment>
                 (
-                    pdabEntities.CrewAssignments.Include(ca => ca.CrewMember).ToList()
+                    pdabEntities.CrewAssignments.Include(ca => ca.CrewMember).Include(ca=> ca.ShipRoute).ToList()
                 );
         }
         #endregion

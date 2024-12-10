@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using pdab.Models.BusinessLogic;
 using pdab.Models.Entities;
+using pdab.Models.EntitiesForView;
 
 namespace pdab.ViewModels
 {
@@ -88,6 +90,14 @@ namespace pdab.ViewModels
         pdabEntities.FuelLogs.Add(item); //dodaje towar do lokalnej kolekcji 
         pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
     }
+
+        public IQueryable<KeyAndValue> ShipItems
+        {
+            get
+            {
+                return new ShipLogic(pdabEntities).GetShipsKeyAndValueItems();
+            }
+        }
     #endregion
 
 }

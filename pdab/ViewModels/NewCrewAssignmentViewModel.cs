@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
+using pdab.Models.EntitiesForView;
+using pdab.Models.BusinessLogic;
+
+
 
 namespace pdab.ViewModels
 {
-    public class NewCrewAssignmentViewModel:OneViewModel<CrewAssignment>
+    public class NewCrewAssignmentViewModel : OneViewModel<CrewAssignment>
     {
         #region Konstruktor
         public NewCrewAssignmentViewModel()
@@ -50,6 +54,22 @@ namespace pdab.ViewModels
         {
             pdabEntities.CrewAssignments.Add(item); //dodaje towar do lokalnej kolekcji 
             pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
+        }
+
+        public IQueryable<KeyAndValue> ShipRouteItems
+        {
+            get
+            {
+                return new ShipRouteLogic(pdabEntities).GetShipRoutesKeyAndValueItems();
+            }
+        }
+
+        public IQueryable<KeyAndValue> CrewMemberItems
+        {
+            get
+            {
+                return new CrewMemberLogic(pdabEntities).GetCrewMembersKeyAndValueItems();
+            }
         }
         #endregion
 

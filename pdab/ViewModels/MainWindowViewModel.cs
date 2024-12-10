@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Data;
+using GalaSoft.MvvmLight.Messaging;
 using pdab.Helper;
+using pdab.Models.Entities;
 
 namespace pdab.ViewModels
 {
@@ -24,6 +26,8 @@ namespace pdab.ViewModels
 
         public MainWindowViewModel()
         {
+            Messenger.Default.Register<string>(this, Open);
+            Messenger.Default.Register<string>(this, Refresh);
             // Define both "All" and "New" workspace factories
             _workspaceFactories = new Dictionary<string, (Func<WorkspaceViewModel>, Func<WorkspaceViewModel>)>
             {
@@ -45,7 +49,7 @@ namespace pdab.ViewModels
             { "Ports", (() => new AllPortsViewModel(), () => new NewPortViewModel()) },
              { "Ship types Cargo types", (() => new AllShipTypesCargoTypesViewModel(), () => new NewShipTypeCargoTypeViewModel()) }
         };
-            }
+        }
 
         #endregion
 
@@ -135,6 +139,35 @@ namespace pdab.ViewModels
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(Workspaces);
             collectionView?.MoveCurrentTo(workspace);
         }
+
+
+        private void Open(string message)
+        {
+            if (message.StartsWith("Add"))
+            {
+                var newView = _workspaceFactories[message.Substring(3)].New();
+                this.Workspaces.Add(newView);
+                this.SetActiveWorkspace(newView);
+            }
+        }
+
+        private void Refresh(string message)
+        {
+            if (message.StartsWith("Refresh"))
+            {
+                var workspaceKey = message.Substring(7).Trim();
+                var workspace = Workspaces.FirstOrDefault(vm => vm.GetType() == _workspaceFactories[workspaceKey].All().GetType());
+                if (workspace != null)
+                {
+                    if (workspace is AllViewModel<Ship> allViewModel)
+                    {
+                        allViewModel.Load();
+                    }
+                }
+            }
+        } 
+        
+
 
         #endregion
     }

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
+using pdab.Models.EntitiesForView;
+using pdab.Models.BusinessLogic;
 
 namespace pdab.ViewModels
 {
-    public class NewPortFeeViewModel:OneViewModel<PortFee>
+    public class NewPortFeeViewModel : OneViewModel<PortFee>
     {
         #region Konstruktor
         public NewPortFeeViewModel()
@@ -76,7 +78,22 @@ namespace pdab.ViewModels
             pdabEntities.PortFees.Add(item); //dodaje towar do lokalnej kolekcji 
             pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
         }
-        #endregion
 
+        public IQueryable<KeyAndValue> ShipItems
+        {
+            get
+            {
+                return new ShipLogic(pdabEntities).GetShipsKeyAndValueItems();
+            }
+            #endregion
+        }
+
+        public IQueryable<KeyAndValue> PortItems
+        {
+            get
+            {
+                return new PortLogic(pdabEntities).GetPortsKeyAndValueItems();
+            }
+        }
     }
 }

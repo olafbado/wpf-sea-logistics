@@ -18,12 +18,20 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="ShipId"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=ShipId, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="CargoId"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=CargoId, UpdateSourceTrigger=PropertyChanged}"/>
-
+        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="Ship"/>
+        <ComboBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8"
+          ItemsSource="{Binding ShipItems}" 
+          DisplayMemberPath="Value" 
+          SelectedValuePath="Key"
+          SelectedValue="{Binding Path=ShipId,Mode=TwoWay}"
+          />
+        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Cargo"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8"
+  ItemsSource="{Binding CargoItems}" 
+  DisplayMemberPath="Value" 
+  SelectedValuePath="Key"
+  SelectedValue="{Binding Path=CargoId,Mode=TwoWay}"
+  />
         <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Quantity"/>
         <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged}"/>
 

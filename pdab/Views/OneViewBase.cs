@@ -48,6 +48,7 @@ namespace pdab.Views
     {
         static OneViewBase()
         {
+
             DefaultStyleKeyProperty.OverrideMetadata(typeof(OneViewBase), new FrameworkPropertyMetadata(typeof(OneViewBase)));
         }
     }

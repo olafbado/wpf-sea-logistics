@@ -12,7 +12,7 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Member Name" Binding="{Binding CrewMember.FirstName}"/>
                 <DataGridTextColumn Header="Member Lastname" Binding="{Binding CrewMember.LastName}"/>
-                <DataGridTextColumn Header="Route Number" Binding="{Binding ShipRouteId}"/> 
+                <DataGridTextColumn Header="Ship Route" Binding="{Binding ShipRoute.Name}"/> 
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

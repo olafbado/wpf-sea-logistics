@@ -17,19 +17,21 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="FirstName"/>
+        <Label Grid.Column="0" Grid.Row="0" Margin="0,8,0,8" Content="First Name"/>
         <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}"/>
         
-        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="LastName"/>
+        <Label Grid.Column="0" Grid.Row="1" Margin="0,8,0,8" Content="Last Name"/>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="2" Margin="0,8,0,8" Content="Rank"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Rank, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8"
+ItemsSource="{Binding RankItems}" 
+DisplayMemberPath="Value" 
+SelectedValuePath="Key"
+SelectedValue="{Binding Path=RankId,Mode=TwoWay}"
+/>
 
-        <Label Grid.Column="0" Grid.Row="3" Margin="0,8,0,8" Content="ShipId"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" Text="{Binding Path=ShipId, UpdateSourceTrigger=PropertyChanged}"/>
 
     </Grid>
 </local:OneViewBase>

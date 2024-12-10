@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
@@ -26,6 +27,28 @@ namespace pdab.ViewModels
                 if (_LoadCommand == null)
                     _LoadCommand = new BaseCommand(() => Load());
                 return _LoadCommand;
+            }
+        }
+
+        private BaseCommand _AddCommand;//to jest komenda, która będzie wywolywala funkcje add wywolujaca okno do dodawania i zostanie podpieta pod przycisk dodaj
+        public ICommand AddCommand
+        {
+            get
+            {
+                if (_AddCommand == null)
+                    _AddCommand = new BaseCommand(() => AddRecord());
+                return _AddCommand;
+            }
+        }
+
+        private BaseCommand _RefreshCommand;
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                if (_RefreshCommand == null)
+                    _RefreshCommand = new BaseCommand(() => RefreshRecords());
+                return _RefreshCommand;
             }
         }
         #endregion
@@ -55,6 +78,19 @@ namespace pdab.ViewModels
         #endregion
         #region Helpers
         public abstract void Load();
+        public virtual void AddRecord()
+        {
+            Messenger.Default.Send("Add"+DisplayName);
+        }
+        public virtual void RefreshRecords()
+        {
+
+
+            //Messenger.Default.Send("Refresh"+DisplayName);
+            Load();
+            
+        }
+
         #endregion
     }
 }

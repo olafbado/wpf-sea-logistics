@@ -242,6 +242,7 @@ public partial class PdabDbContext : DbContext
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ArrivalDate).HasColumnType("datetime");
             entity.Property(e => e.DepartureDate).HasColumnType("datetime");
+            entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.ArrivalPort).WithMany(p => p.ShipRouteArrivalPorts)
                 .HasForeignKey(d => d.ArrivalPortId)
