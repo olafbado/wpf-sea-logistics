@@ -11,7 +11,7 @@
                     <Grid Margin="0,10,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="34"/>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="100"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <ToolBar Grid.Row="0" Margin="0,2,0,2">
@@ -21,7 +21,29 @@
                             <ToggleButton Content="Refresh" Margin="0,2,0,2" Command="{Binding RefreshCommand}"/>
                         </ToolBar>
                         <StackPanel Grid.Row="1" Background="Azure">
-                            <Label>--Sorting and filtering--</Label>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="230"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="230"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Content="Sort: "/>
+                                <ComboBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding SortItems}" SelectedValue="{Binding Path=SortField, Mode=TwoWay}"/>
+                                <Button Content="Sort" Grid.Row="2" Grid.Column="0" Command="{Binding SortCommand}" Height="20"  />
+
+                                <Label Grid.Row="0" Grid.Column="2" Content="Search: "/>
+                                <ComboBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding FindItems}" SelectedValue="{Binding Path=FindField, Mode=TwoWay}" Height="20"/>
+                                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding FindText}" Height="20" />
+                                <Button Content="Search" Grid.Row="3" Grid.Column="2" Command="{Binding FindCommand}"  Height="20"/>
+
+
+                            </Grid>
                         </StackPanel>
                         <ContentPresenter Grid.Row="2" Margin="0,5,0,5"/>
                     </Grid>

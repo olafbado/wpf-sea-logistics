@@ -80,15 +80,64 @@ namespace pdab.ViewModels
         public abstract void Load();
         public virtual void AddRecord()
         {
-            Messenger.Default.Send("Add"+DisplayName);
+            Messenger.Default.Send("Add" + DisplayName);
         }
         public virtual void RefreshRecords()
         {
 
             Load();
-            
+
         }
 
-        #endregion
+        public string SortField { get; set; }
+        public List<string> SortItems
+        {
+            get
+            {
+                return GetSortList();
+            }
+        }
+
+        public virtual List<string> GetSortList() { return new List<string>(); }
+
+        private BaseCommand _SortCommand;
+        public ICommand SortCommand
+        {
+            get
+            {
+                if (_SortCommand == null)
+                    _SortCommand = new BaseCommand(() => Sort());
+                return _SortCommand;
+
+            }
+        }
+
+        public virtual void Sort() { }
+        public string FindField { get; set; }
+        public List<string> FindItems
+        {
+            get
+            {
+                return GetFindList();
+            }
+
+            #endregion
+        }
+        public virtual List<string> GetFindList() { return new List<string>(); }
+        public string FindText { get; set; }
+        private BaseCommand _FindCommand;
+        public ICommand FindCommand
+        {
+            get
+            {
+                if (_FindCommand == null)
+                    _FindCommand = new BaseCommand(() => Find());
+                return _FindCommand;
+            }
+        }
+
+        public virtual void Find()
+        {
+        }
     }
 }

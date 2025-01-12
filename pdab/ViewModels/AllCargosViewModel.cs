@@ -27,5 +27,50 @@ namespace pdab.ViewModels
                 );
         }
         #endregion
-    }
+        #region sort ant find
+        public override List<string> GetSortList()
+        {
+            return new List<string> { "Description", "Weight", "CargoType" };
+        }
+
+        public override void Sort()
+        {
+            if (SortField == "Description")
+            {
+                List = new ObservableCollection<Cargo>(List.OrderBy(c => c.Description));
+            }
+            if (SortField == "Weight")
+            {
+                List = new ObservableCollection<Cargo>(List.OrderBy(c => c.Weight));
+            }
+            if (SortField == "CargoType")
+            {
+                List = new ObservableCollection<Cargo>(List.OrderBy(c => c.CargoType.Name));
+            }
+
+        }
+
+        public override List<string> GetFindList()
+        {
+            return new List<string> { "Description", "Weight", "CargoType" };
+        }
+
+        public override void Find()
+        {
+            Load();
+            if (FindField == "Description")
+            {
+                List = new ObservableCollection<Cargo>(List.Where(c => c.Description != null && c.Description.Contains(FindText)));
+            }
+            if (FindField == "Weight")
+            {
+                List = new ObservableCollection<Cargo>(List.Where(c => c.Weight.ToString().Contains(FindText)));
+            }
+            if (FindField == "CargoType")
+            {
+                List = new ObservableCollection<Cargo>(List.Where(c => c.CargoType.Name.Contains(FindText)));
+            }
+        }
+            #endregion
+        }
 }
