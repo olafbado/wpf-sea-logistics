@@ -3,6 +3,8 @@
                     xmlns:vm="clr-namespace:pdab.ViewModels"
                     xmlns:vw="clr-namespace:pdab.Views"
                     >
+    
+
     <!-- SHIP -->
     <DataTemplate DataType="{x:Type vm:AllShipsViewModel}">
         <vw:AllShips/>
@@ -224,4 +226,6 @@
       Margin="4"
       />
     </DataTemplate>
+    
+    
 </ResourceDictionary>

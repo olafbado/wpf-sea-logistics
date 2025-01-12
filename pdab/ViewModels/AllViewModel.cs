@@ -85,8 +85,6 @@ namespace pdab.ViewModels
         public virtual void RefreshRecords()
         {
 
-
-            //Messenger.Default.Send("Refresh"+DisplayName);
             Load();
             
         }

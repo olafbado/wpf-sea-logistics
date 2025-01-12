@@ -27,7 +27,7 @@ namespace pdab.ViewModels
         public MainWindowViewModel()
         {
             Messenger.Default.Register<string>(this, Open);
-            Messenger.Default.Register<string>(this, Refresh);
+            //Messenger.Default.Register<string>(this, Refresh);
             // Define both "All" and "New" workspace factories
             _workspaceFactories = new Dictionary<string, (Func<WorkspaceViewModel>, Func<WorkspaceViewModel>)>
             {

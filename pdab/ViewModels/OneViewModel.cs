@@ -43,9 +43,19 @@ namespace pdab.ViewModels
         public abstract void Save();
         public void SaveAndClose()
         {
-            Save();
-            base.OnRequestClose();//zamkniecie zakładki 
+            Console.WriteLine("hello");
+            if (IsValid())
+            {
+                ShowMessageBox("Saved");
+                Save();
+                base.OnRequestClose();//zamkniecie zakładki 
+            } else
+            {
+                ShowMessageBox("Error");
+            }
         }
+
+        public virtual bool IsValid() => true;
        
         #endregion
 

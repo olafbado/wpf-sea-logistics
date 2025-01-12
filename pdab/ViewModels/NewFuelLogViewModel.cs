@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 using pdab.Models.BusinessLogic;
 using pdab.Models.Entities;
 using pdab.Models.EntitiesForView;
+using pdab.Models.Validators;
 
 namespace pdab.ViewModels
 {
-    public class NewFuelLogViewModel:OneViewModel<FuelLog>
+    public class NewFuelLogViewModel:OneViewModel<FuelLog>, INotifyDataErrorInfo
     {
 
         #region Konstruktor
@@ -31,8 +35,10 @@ namespace pdab.ViewModels
         {
             item.Quantity = value;
             OnPropertyChanged(() => Quantity);
+            ValidateProperty(nameof(Quantity), value);
+
+            }
         }
-    }
         public int Cost
         {
             get
@@ -43,6 +49,8 @@ namespace pdab.ViewModels
             {
                 item.Cost = value;
                 OnPropertyChanged(() => Cost);
+                ValidateProperty(nameof(Cost), value);
+
 
             }
         }
@@ -80,16 +88,106 @@ namespace pdab.ViewModels
         {
             item.FuelType = value;
             OnPropertyChanged(() => FuelType);
-        }
-    }
-    #endregion
+            ValidateProperty(nameof(FuelType), value);
 
-    #region Helpers
-    public override void Save()
+            }
+        }
+        #endregion
+
+        #region validations
+        private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+
+        public bool HasErrors => _errors.Any();
+
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
+        public IEnumerable GetErrors(string? propertyName)
+        {
+            return propertyName != null && _errors.ContainsKey(propertyName) ? _errors[propertyName] : Enumerable.Empty<string>();
+        }
+
+        private void ValidateProperty(string propertyName, object value)
+        {
+            var errors = new List<string>();
+
+            switch (propertyName)
+            {
+                case nameof(FuelType):
+                    var fuelError = StringValidator.CheckIfStartsWithCapitalLetter(value as string);
+                    if (!string.IsNullOrEmpty(fuelError))
+                    {
+                        errors.Add(fuelError);
+                    }
+                    break;
+                case nameof(Quantity):
+                    var quantityError = NumberValidator.CheckIfPositive((int)value);
+                    if (!string.IsNullOrEmpty(quantityError))
+                    {
+                        errors.Add(quantityError);
+                    }
+                    break;
+                case nameof(Cost):
+                    var costError = NumberValidator.CheckIfPositive((int)value);
+                    if (!string.IsNullOrEmpty(costError))
+                    {
+                        errors.Add(costError);
+                    }
+                    break;
+            }
+
+            if (errors.Any())
+            {
+                _errors[propertyName] = errors;
+            }
+            else
+            {
+                _errors.Remove(propertyName);
+            }
+
+            OnErrorsChanged(propertyName);
+        }
+
+        protected virtual void OnErrorsChanged(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        public override bool IsValid()
+        {
+            var properties = new[] { nameof(FuelType), nameof(Quantity), nameof(Cost) };
+            var isValid = true;
+
+            foreach (var property in properties)
+            {
+                ValidateProperty(property, GetType().GetProperty(property)?.GetValue(this));
+                if (_errors.ContainsKey(property))
+                {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        public string GetValidationErrors()
+        {
+            var errors = new StringBuilder();
+            foreach (var error in _errors)
+            {
+                errors.AppendLine($"{error.Key}: {string.Join(", ", error.Value)}");
+            }
+            return errors.ToString();
+        }
+        #endregion
+
+        #region Helpers
+        public override void Save()
     {
         pdabEntities.FuelLogs.Add(item); //dodaje towar do lokalnej kolekcji 
         pdabEntities.SaveChanges();//zapisuje zmiany do bazy danych
     }
+
+
 
         public IQueryable<KeyAndValue> ShipItems
         {
