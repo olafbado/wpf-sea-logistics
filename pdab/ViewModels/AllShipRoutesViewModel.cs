@@ -27,5 +27,79 @@ namespace pdab.ViewModels
                 );
         }
         #endregion
+        #region sort and find
+
+        public override List<string> GetSortList()
+        {
+            return new List<string> { "Ship", "DeparturePort", "ArrivalPort", "DepartureDate", "ArrivalDate", "Name" };
+        }
+
+
+        public override void Sort()
+        {
+            if (SortField == "Ship")
+            {
+                List = new ObservableCollection<ShipRoute>(List.OrderBy(sr => sr.Ship.Name));
+            }
+            if (SortField == "DeparturePort")
+            {
+                List = new ObservableCollection<ShipRoute>(List.OrderBy(sr => sr.DeparturePort.Name));
+            }
+            if (SortField == "ArrivalPort")
+            {
+                List = new ObservableCollection<ShipRoute>(List.OrderBy(sr => sr.ArrivalPort.Name));
+            }
+            if (SortField == "DepartureDate")
+            {
+                List = new ObservableCollection<ShipRoute>(List.OrderBy(sr => sr.DepartureDate));
+            }
+            if (SortField == "ArrivalDate")
+            {
+                List = new ObservableCollection<ShipRoute>(List.OrderBy(sr => sr.ArrivalDate));
+            }
+            if (SortField == "Name")
+            {
+                List = new ObservableCollection<ShipRoute>(List.OrderBy(sr => sr.Name));
+            }
+
+        }
+
+        public override List<string> GetFindList()
+        {
+            return new List<string> { "Ship", "DeparturePort", "ArrivalPort", "DepartureDate", "ArrivalDate", "Name" };
+
+        }
+
+        public override void Find()
+        {
+            Load();
+            if (FindField == "Ship")
+            {
+                List = new ObservableCollection<ShipRoute>(List.Where(sr => sr.Ship.Name.ToLower().Contains(FindText.ToLower())).ToList());
+            }
+            if (FindField == "DeparturePort")
+            {
+                List = new ObservableCollection<ShipRoute>(List.Where(sr => sr.DeparturePort.Name.ToLower().Contains(FindText.ToLower())).ToList());
+            }
+            if (FindField == "ArrivalPort")
+            {
+                List = new ObservableCollection<ShipRoute>(List.Where(sr => sr.ArrivalPort.Name.ToLower().Contains(FindText.ToLower())).ToList());
+            }
+            if (FindField == "DepartureDate")
+            {
+                List = new ObservableCollection<ShipRoute>(List.Where(sr => sr.DepartureDate.ToString().Contains(FindText)).ToList());
+            }
+            if (FindField == "ArrivalDate")
+            {
+                List = new ObservableCollection<ShipRoute>(List.Where(sr => sr.ArrivalDate.ToString().Contains(FindText)).ToList());
+            }
+            if (FindField == "Name")
+            {
+                List = new ObservableCollection<ShipRoute>(List.Where(sr => sr.Name != null && sr.Name.ToLower().Contains(FindText.ToLower())).ToList());
+            }
+        }
+
+        #endregion
     }
+
 }

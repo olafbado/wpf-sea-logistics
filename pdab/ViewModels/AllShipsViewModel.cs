@@ -39,5 +39,63 @@ namespace pdab.ViewModels
             Messenger.Default.Send("Refresh" + DisplayName);
         }
         #endregion
+
+        #region sort and find
+
+        public override List<string> GetSortList()
+        {
+            return new List<string> { "Name", "ShipType", "Flag", "BuildYear" };
+        }
+
+        public override void Sort()
+        {
+            if (SortField == "Name")
+            {
+                List = new ObservableCollection<Ship>(List.OrderBy(s => s.Name));
+            }
+            if (SortField == "ShipType")
+            {
+                List = new ObservableCollection<Ship>(List.OrderBy(s => s.ShipType.Name));
+            }
+            if (SortField == "Flag")
+            {
+                List = new ObservableCollection<Ship>(List.OrderBy(s => s.Flag));
+            }
+            if (SortField == "BuildYear")
+            {
+                List = new ObservableCollection<Ship>(List.OrderBy(s => s.BuildYear));
+            }
+        }
+
+        public override List<string> GetFindList()
+        {
+            return new List<string> { "Name", "ShipType", "Flag", "BuildYear" };
+        }
+
+        public override void Find()
+        {
+            Load();
+            if (FindField == "Name")
+            {
+                List = new ObservableCollection<Ship>(List.Where(s => s.Name != null && s.Name.Contains(FindText)));
+            }
+            if (FindField == "ShipType")
+            {
+                List = new ObservableCollection<Ship>(List.Where(s => s.ShipType.Name != null && s.ShipType.Name.Contains(FindText)));
+            }
+            if (FindField == "Flag")
+            {
+                List = new ObservableCollection<Ship>(List.Where(s => s.Flag != null && s.Flag.Contains(FindText)));
+            }
+            if (FindField == "BuildYear")
+            {
+                if (int.TryParse(FindText, out int buildYear))
+                {
+                    List = new ObservableCollection<Ship>(List.Where(s => s.BuildYear == buildYear));
+                }
+            }
+        }
+
+        #endregion
     }
 }

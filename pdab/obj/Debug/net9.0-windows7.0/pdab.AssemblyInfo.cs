@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pdab")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+396153370f15f68be65d9d750a631502d167e782")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5500f7bce1c056ab94db805cbf968e814f52048")]
 [assembly: System.Reflection.AssemblyProductAttribute("pdab")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pdab")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

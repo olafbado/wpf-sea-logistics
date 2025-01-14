@@ -28,5 +28,39 @@ namespace pdab.ViewModels
                 );
         }
         #endregion
+
+        #region sort ant find
+        //metoda zwraca listę pól po których można sortować
+        public override List<string> GetSortList()
+        {
+            return new List<string> { "Name" };
+        }
+
+        //metoda sortująca towary po wybranym polu
+        public override void Sort()
+        {
+            if (SortField == "Name")
+            {
+                List = new ObservableCollection<ShipType>(List.OrderBy(c => c.Name));
+            }
+        }
+
+        //metoda zwraca listę pól po których można wyszukiwać
+        public override List<string> GetFindList()
+        {
+            return new List<string> { "Name" };
+        }
+
+        //metoda wyszukująca towary po wybranym polu
+        public override void Find()
+        {
+            Load();
+            if (FindField == "Name")
+            {
+                List = new ObservableCollection<ShipType>(List.Where(c => c.Name.ToLower().Contains(FindText.ToLower())));
+            }
+        }
+
+        #endregion
     }
 }

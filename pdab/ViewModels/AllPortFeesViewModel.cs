@@ -27,5 +27,58 @@ namespace pdab.ViewModels
                 );
         }
         #endregion
+        #region sort ant find
+        public override List<string> GetSortList()
+        {
+            return new List<string> { "Ship", "Port", "Date", "Amount" };
+        }
+
+        public override void Sort()
+        {
+            if (SortField == "Ship")
+            {
+                List = new ObservableCollection<PortFee>(List.OrderBy(pf => pf.Ship.Name));
+            }
+            if (SortField == "Port")
+            {
+                List = new ObservableCollection<PortFee>(List.OrderBy(pf => pf.Port.Name));
+            }
+            if (SortField == "Date")
+            {
+                List = new ObservableCollection<PortFee>(List.OrderBy(pf => pf.Date));
+            }
+            if (SortField == "Amount")
+            {
+                List = new ObservableCollection<PortFee>(List.OrderBy(pf => pf.Amount));
+            }
+        }
+
+        public override List<string> GetFindList()
+        {
+            return new List<string> { "Ship", "Port", "Date", "Amount" };
+        }
+
+        public override void Find()
+        {
+            Load();
+            if (FindField == "Ship")
+            {
+                List = new ObservableCollection<PortFee>(List.Where(pf => pf.Ship.Name.ToLower().Contains(FindText.ToLower())).ToList());
+            }
+            if (FindField == "Port")
+            {
+                List = new ObservableCollection<PortFee>(List.Where(pf => pf.Port.Name.ToLower().Contains(FindText.ToLower())).ToList());
+            }
+            if (FindField == "Date")
+            {
+                List = new ObservableCollection<PortFee>(List.Where(pf => pf.Date.ToString().Contains(FindText)).ToList());
+            }
+            if (FindField == "Amount")
+            {
+                List = new ObservableCollection<PortFee>(List.Where(pf => pf.Amount.ToString().Contains(FindText)).ToList());
+            }
+        }
+
+        #endregion
     }
 }

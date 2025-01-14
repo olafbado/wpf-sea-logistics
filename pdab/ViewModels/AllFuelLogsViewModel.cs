@@ -29,5 +29,73 @@ namespace pdab.ViewModels
                 );
         }
         #endregion
+        #region sort ant find
+
+        public override List<string> GetSortList()
+        {
+            return new List<string> { "Ship", "FuelType", "Quantity", "Cost", "Date" };
+        }
+
+        //metoda sortująca towary po wybranym polu
+
+        public override void Sort()
+        {
+            if (SortField == "Ship")
+            {
+                List = new ObservableCollection<FuelLog>(List.OrderBy(fl => fl.Ship.Name));
+            }
+            if (SortField == "FuelType")
+            {
+                List = new ObservableCollection<FuelLog>(List.OrderBy(fl => fl.FuelType));
+            }
+            if (SortField == "Quantity")
+            {
+                List = new ObservableCollection<FuelLog>(List.OrderBy(fl => fl.Quantity));
+            }
+            if (SortField == "Cost")
+            {
+                List = new ObservableCollection<FuelLog>(List.OrderBy(fl => fl.Cost));
+            }
+            if (SortField == "Date")
+            {
+                List = new ObservableCollection<FuelLog>(List.OrderBy(fl => fl.Date));
+            }
+        }
+
+        //metoda zwraca listę pól po których można wyszukiwać
+
+        public override List<string> GetFindList()
+        {
+            return new List<string> { "Ship", "FuelType", "Quantity", "Cost", "Date" };
+        }
+
+        //metoda wyszukująca towary po wybranym polu
+
+        public override void Find()
+        {
+            Load();
+            if (FindField == "Ship")
+            {
+                List = new ObservableCollection<FuelLog>(List.Where(fl => fl.Ship.Name.Contains(FindText)));
+            }
+            if (FindField == "FuelType")
+            {
+                List = new ObservableCollection<FuelLog>(List.Where(fl => fl.FuelType.Contains(FindText)));
+            }
+            if (FindField == "Quantity")
+            {
+                List = new ObservableCollection<FuelLog>(List.Where(fl => fl.Quantity.ToString().Contains(FindText)));
+            }
+            if (FindField == "Cost")
+            {
+                List = new ObservableCollection<FuelLog>(List.Where(fl => fl.Cost.ToString().Contains(FindText)));
+            }
+            if (FindField == "Date")
+            {
+                List = new ObservableCollection<FuelLog>(List.Where(fl => fl.Date.ToString().Contains(FindText)));
+            }
+        }
+
+        #endregion
     }
 }
