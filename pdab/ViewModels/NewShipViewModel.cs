@@ -5,10 +5,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using pdab.Helper;
+using System.Windows.Input;
 using pdab.Models.BusinessLogic;
 using pdab.Models.Entities;
 using pdab.Models.EntitiesForView;
 using pdab.Models.Validators;
+using GalaSoft.MvvmLight.Messaging;
+
 
 namespace pdab.ViewModels
 {
@@ -173,6 +177,7 @@ namespace pdab.ViewModels
 
         }
         #endregion
+       
 
     }
 }

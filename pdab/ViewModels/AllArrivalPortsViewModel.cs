@@ -5,36 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using pdab.Models.Entities;
-using System.Windows.Documents;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
-    public class AllPortsViewModel : AllViewModel<Port>
+    public class AllArrivalPortsViewModel : AllViewModel<Port>
     {
         #region Constructor
-        public AllPortsViewModel()
+        public AllArrivalPortsViewModel()
             : base("Ports")
         {
-
         }
         #endregion
         #region Helpers
-        private Port _SelectedPort;
-        public Port SelectedPort 
-        {
-            get
-            {
-                return _SelectedPort;
-            }
-            set
-            {
-                _SelectedPort = value;
-                
-                Messenger.Default.Send(_SelectedPort);
-                OnRequestClose();
-            }
-        }
         //metoda load pobiera wszystkie towary z bazy danych 
         public override void Load()
         {
@@ -44,8 +26,6 @@ namespace pdab.ViewModels
                 //z bazy danych, pobieram Towar i wszystkie rekordy zamieniam na listę
                 );
         }
-        #endregion
-        #region Properties
         #endregion
         #region sort ant find
         //metoda zwraca listę pól po których można sortować
@@ -92,5 +72,4 @@ namespace pdab.ViewModels
 
         #endregion
     }
-
 }

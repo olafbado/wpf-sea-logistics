@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using pdab.Models.BusinessLogic;
 using pdab.Models.EntitiesForView;
+using pdab.Helper;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
@@ -16,6 +19,8 @@ namespace pdab.ViewModels
             : base("New Ship cargo")
         {
             item = new ShipCargo();
+            Messenger.Default.Register<Ship>(this, getSelectedShip);
+            Messenger.Default.Register<Cargo>(this, getSelectedCargo);
         }
         #endregion
         #region Properties
@@ -44,6 +49,18 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => CargoId);
             }
         }
+
+        public string ShipName
+        {
+            get;
+            set;
+        }
+
+        public string CargoName
+        {
+            get;
+            set;
+        }
         public int Quantity
         {
             get
@@ -57,11 +74,60 @@ namespace pdab.ViewModels
             }
         }
 
-        
+
 
         #endregion
 
         #region Helpers
+        private void getSelectedShip(Ship ship)
+        {
+            ShipId = ship.Id;
+            ShipName = ship.Name;
+        }
+
+        private void getSelectedCargo(Cargo cargo)
+        {
+            CargoId = cargo.Id;
+            CargoName = cargo.Description;
+        }
+
+        private BaseCommand _ShowShips;
+        public ICommand ShowShips
+        {
+            get
+            {
+                if (_ShowShips == null)
+                {
+                    _ShowShips = new BaseCommand(() => showShips());
+                }
+                return _ShowShips;
+            }
+        }
+
+        private void showShips()
+        {
+            Messenger.Default.Send("AllShips");
+        }
+
+        private BaseCommand _ShowCargos;
+        public ICommand ShowCargos
+        {
+            get
+            {
+                if (_ShowCargos == null)
+                {
+                    _ShowCargos = new BaseCommand(() => showCargos());
+                }
+                return _ShowCargos;
+            }
+        }
+
+
+        private void showCargos()
+        {
+            Messenger.Default.Send("AllCargos");
+        }
+
         public override void Save()
         {
             pdabEntities.ShipCargos.Add(item); //dodaje towar do lokalnej kolekcji 

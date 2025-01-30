@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using pdab.Models.EntitiesForView;
 using pdab.Models.BusinessLogic;
+using GalaSoft.MvvmLight.Messaging;
+using static pdab.ViewModels.NewShipRouteViewModel;
+using pdab.Helper;
+using System.Windows.Input;
 
 
 
@@ -18,6 +22,8 @@ namespace pdab.ViewModels
             : base("New Crew assignment")
         {
             item = new CrewAssignment();
+            Messenger.Default.Register<ShipRoute>(this, getSelectedShipRoute);
+            Messenger.Default.Register<CrewMember>(this, getSelectedCrewMember);
         }
         #endregion
         #region Properties
@@ -34,6 +40,11 @@ namespace pdab.ViewModels
                 OnPropertyChanged(() => ShipRouteId);
             }
         }
+
+        public string ShipRouteName {
+            get;
+            set;
+        }
         public int CrewMemberId
         {
             get
@@ -47,9 +58,60 @@ namespace pdab.ViewModels
             }
         }
 
+        public string CrewMemberName
+        {
+            get;
+            set;
+        }
+
         #endregion
 
+
         #region Helpers
+        private BaseCommand _ShowShipRoutes;
+        public ICommand ShowShipRoutes
+        {
+            get
+            {
+                if (_ShowShipRoutes == null)
+                    _ShowShipRoutes = new BaseCommand(() => showShipRoutes());
+                return _ShowShipRoutes;
+            }
+        }
+
+        private void showShipRoutes()
+        {
+            Messenger.Default.Send("AllShipRoutes");
+        }
+
+        private BaseCommand _ShowCrewMembers;
+        public ICommand ShowCrewMembers
+        {
+            get
+            {
+                if (_ShowCrewMembers == null)
+                    _ShowCrewMembers = new BaseCommand(() => showCrewMembers());
+                return _ShowCrewMembers;
+            }
+        }
+
+        private void showCrewMembers()
+        {
+            Messenger.Default.Send("AllCrewMembers");
+        }
+
+
+        private void getSelectedShipRoute(ShipRoute shipRoute) { 
+            ShipRouteName = shipRoute.Name;
+            ShipRouteId = shipRoute.Id;
+        }
+
+        private void getSelectedCrewMember(CrewMember crewMember)
+        {
+            CrewMemberId = crewMember.Id;
+            CrewMemberName = crewMember.FirstName + " " + crewMember.LastName;
+        }
+
         public override void Save()
         {
             pdabEntities.CrewAssignments.Add(item); //dodaje towar do lokalnej kolekcji 

@@ -27,6 +27,8 @@ namespace pdab.ViewModels
         public MainWindowViewModel()
         {
             Messenger.Default.Register<string>(this, Open);
+           // Messenger.Default.Register<string>(this, HandleShipsMessage);
+
             //Messenger.Default.Register<string>(this, Refresh);
             // Define both "All" and "New" workspace factories
             _workspaceFactories = new Dictionary<string, (Func<WorkspaceViewModel>, Func<WorkspaceViewModel>)>
@@ -143,13 +145,58 @@ namespace pdab.ViewModels
 
         private void Open(string message)
         {
+            if (message == "AllShipRoutes")
+            {
+                var allView = _workspaceFactories["Ship routes"].All();
+                this.Workspaces.Add(allView);
+                this.SetActiveWorkspace(allView);
+            }
+            if (message == "AllCrewMembers")
+            {
+                var allView = _workspaceFactories["Crew members"].All();
+                this.Workspaces.Add(allView);
+                this.SetActiveWorkspace(allView);
+            }
+            if (message == "AllShips")
+            {
+                var allView = _workspaceFactories["Ships"].All();
+                this.Workspaces.Add(allView);
+                this.SetActiveWorkspace(allView);
+            }
+
+            if (message == "AllPorts")
+            {
+                var allView = _workspaceFactories["Ports"].All();
+                this.Workspaces.Add(allView);
+                this.SetActiveWorkspace(allView);
+            }
+            if (message == "AllCargos")
+            {
+                var allView = _workspaceFactories["Cargos"].All();
+                this.Workspaces.Add(allView);
+                this.SetActiveWorkspace(allView);
+            }
+
             if (message.StartsWith("Add"))
             {
                 var newView = _workspaceFactories[message.Substring(3)].New();
                 this.Workspaces.Add(newView);
                 this.SetActiveWorkspace(newView);
             }
+           
+
+
+
+
         }
+        private void HandleShipsMessage(string message)
+        {
+            if (message == "Ships")
+            {
+                ShowWorkspace("Ships", true);
+            }
+        }
+
 
         private void Refresh(string message)
         {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
@@ -16,6 +17,19 @@ namespace pdab.ViewModels
         public AllShipRoutesViewModel()
             : base("Ship routes")
         {
+        }
+        #endregion
+        #region Properties
+        private ShipRoute _SelectedShipRoute;
+        public ShipRoute SelectedShipRoute
+        {
+            get { return _SelectedShipRoute; }
+            set
+            {
+                _SelectedShipRoute = value;
+                Messenger.Default.Send(_SelectedShipRoute);
+                OnRequestClose();
+            }
         }
         #endregion
         #region Helpers

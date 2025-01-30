@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
@@ -19,6 +20,20 @@ namespace pdab.ViewModels
         }
         #endregion
         #region Helpers
+        private Cargo _SelectedCargo;
+        public Cargo SelectedCargo
+        {
+            get
+            {
+                return _SelectedCargo;
+            }
+            set
+            {
+                _SelectedCargo = value;
+                Messenger.Default.Send(_SelectedCargo);
+                OnRequestClose();
+            }
+        }
         public override void Load()
         {
             List = new ObservableCollection<Cargo>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP
 D:\Studia\desktopowe\projekt\pdab\App.xaml
-35-1180600030
+361229864791
 
-109-2079696184
+111-1355363795
 239-99486987
-Themes\Generic.xaml;Views\AllCargos.xaml;Views\AllCargoTypes.xaml;Views\AllContracts.xaml;Views\AllCrewAssignments.xaml;Views\AllCrewMembers.xaml;Views\AllFuelLogs.xaml;Views\AllPortFees.xaml;Views\AllPorts.xaml;Views\AllRanks.xaml;Views\AllShipCargos.xaml;Views\AllShipInspections.xaml;Views\AllShipMaintenances.xaml;Views\AllShipRoutes.xaml;Views\AllShips.xaml;Views\AllShipTypes.xaml;Views\AllShipTypesCargoTypes.xaml;Views\MainWindow.xaml;Views\MainWindowResources.xaml;Views\NewCargo.xaml;Views\NewCargoType.xaml;Views\NewContract.xaml;Views\NewCrewAssignment.xaml;Views\NewCrewMember.xaml;Views\NewFuelLog.xaml;Views\NewPort.xaml;Views\NewPortFee.xaml;Views\NewRank.xaml;Views\NewShip.xaml;Views\NewShipCargo.xaml;Views\NewShipInspection.xaml;Views\NewShipMaintenance.xaml;Views\NewShipRoute.xaml;Views\NewShipType.xaml;Views\NewShipTypeCargoType.xaml;
+Themes\Generic.xaml;Views\AllArrivalPortsView.xaml;Views\AllCargos.xaml;Views\AllCargoTypes.xaml;Views\AllContracts.xaml;Views\AllCrewAssignments.xaml;Views\AllCrewMembers.xaml;Views\AllFuelLogs.xaml;Views\AllPortFees.xaml;Views\AllPorts.xaml;Views\AllRanks.xaml;Views\AllShipCargos.xaml;Views\AllShipInspections.xaml;Views\AllShipMaintenances.xaml;Views\AllShipRoutes.xaml;Views\AllShips.xaml;Views\AllShipTypes.xaml;Views\AllShipTypesCargoTypes.xaml;Views\MainWindow.xaml;Views\MainWindowResources.xaml;Views\NewCargo.xaml;Views\NewCargoType.xaml;Views\NewContract.xaml;Views\NewCrewAssignment.xaml;Views\NewCrewMember.xaml;Views\NewFuelLog.xaml;Views\NewPort.xaml;Views\NewPortFee.xaml;Views\NewRank.xaml;Views\NewShip.xaml;Views\NewShipCargo.xaml;Views\NewShipInspection.xaml;Views\NewShipMaintenance.xaml;Views\NewShipRoute.xaml;Views\NewShipType.xaml;Views\NewShipTypeCargoType.xaml;
 
 False
 

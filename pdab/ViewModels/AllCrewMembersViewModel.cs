@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace pdab.ViewModels
 {
@@ -19,6 +20,17 @@ namespace pdab.ViewModels
         }
         #endregion
         #region Helpers
+        private CrewMember _SelectedCrewMember;
+        public CrewMember SelectedCrewMember
+        {
+            get { return _SelectedCrewMember; }
+            set
+            {
+                _SelectedCrewMember = value;
+                Messenger.Default.Send(_SelectedCrewMember);
+                OnRequestClose();
+            }
+        }
         //metoda load pobiera wszystkie towary z bazy danych 
         public override void Load()
         {

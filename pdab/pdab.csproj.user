@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\AllArrivalPortsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AllCargos.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -106,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllArrivalPortsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AllCargos.xaml">

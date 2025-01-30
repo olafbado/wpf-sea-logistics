@@ -9,6 +9,8 @@ using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
 using pdab.Models.EntitiesForView;
 using GalaSoft.MvvmLight.Messaging;
+using pdab.Helper;
+using System.Windows.Input;
 
 namespace pdab.ViewModels
 {
@@ -21,6 +23,20 @@ namespace pdab.ViewModels
         }
         #endregion
         #region Helpers
+        private Ship _SelectedShip;
+        public Ship SelectedShip
+        {
+            get
+            {
+                return _SelectedShip;
+            }
+            set
+            {
+                _SelectedShip = value;
+                Messenger.Default.Send(_SelectedShip);
+                OnRequestClose();
+            }
+        }
         public override void Load()
         {
             List = new ObservableCollection<Ship>
@@ -39,7 +55,7 @@ namespace pdab.ViewModels
             Messenger.Default.Send("Refresh" + DisplayName);
         }
         #endregion
-
+  
         #region sort and find
 
         public override List<string> GetSortList()

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using pdab.Models.Entities;
 using pdab.Models.EntitiesForView;
 using pdab.Models.BusinessLogic;
+using GalaSoft.MvvmLight.Messaging;
+using pdab.Helper;
+using System.Windows.Input;
 
 namespace pdab.ViewModels
 {
@@ -16,6 +19,8 @@ namespace pdab.ViewModels
             : base("New Port fee")
         {
             item = new PortFee();
+            Messenger.Default.Register<Port>(this, getSelectedPort);
+            Messenger.Default.Register<Ship>(this, getSelectedShip);
         }
         #endregion
         #region Properties
@@ -43,6 +48,18 @@ namespace pdab.ViewModels
                 item.ShipId = value;
                 OnPropertyChanged(() => ShipId);
             }
+        }
+
+        public string PortName
+        {
+            get;
+            set;
+        }
+
+        public string ShipName
+        {
+            get;
+            set;
         }
         public DateTime Date
         {
@@ -73,6 +90,48 @@ namespace pdab.ViewModels
         #endregion
 
         #region Helpers
+        private BaseCommand _ShowShips;
+        public ICommand ShowShips
+        {
+            get
+            {
+                if (_ShowShips == null)
+                    _ShowShips = new BaseCommand(() => showShips());
+                return _ShowShips;
+            }
+        }
+
+        private void showShips()
+        {
+            Messenger.Default.Send("AllShips");
+        }
+
+        private BaseCommand _ShowPorts;
+        public ICommand ShowPorts
+        {
+            get
+            {
+                if (_ShowPorts == null)
+                    _ShowPorts = new BaseCommand(() => showPorts());
+                return _ShowPorts;
+            }
+        }
+
+        private void showPorts()
+        {
+            Messenger.Default.Send("AllPorts");
+        }
+        public void getSelectedPort(Port port)
+        {
+            PortId = port.Id;
+            PortName = port.Name;
+        }
+
+        public void getSelectedShip(Ship ship)
+        {
+            ShipId = ship.Id;
+            ShipName = ship.Name;
+        }
         public override void Save()
         {
             pdabEntities.PortFees.Add(item); //dodaje towar do lokalnej kolekcji 
@@ -85,8 +144,9 @@ namespace pdab.ViewModels
             {
                 return new ShipLogic(pdabEntities).GetShipsKeyAndValueItems();
             }
-            #endregion
+            
         }
+        #endregion
 
         public IQueryable<KeyAndValue> PortItems
         {
